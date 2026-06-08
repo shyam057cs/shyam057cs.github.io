@@ -1,1 +1,403 @@
-"Hello World!" 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal website for Shyam Shankar, software engineer interested in machine learning, systems, and practical product engineering.">
+  <title>Shyam Shankar</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #5f6b78;
+      --line: #d9e0e8;
+      --paper: #fbfcfd;
+      --panel: #ffffff;
+      --teal: #0f766e;
+      --coral: #c2410c;
+      --blue: #2563eb;
+      --shadow: 0 18px 45px rgba(28, 40, 56, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(120deg, rgba(15, 118, 110, 0.08), rgba(194, 65, 12, 0.08) 45%, rgba(37, 99, 235, 0.07)),
+        var(--paper);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 42px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 0 28px;
+    }
+
+    .mark {
+      display: inline-grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+      font-weight: 800;
+      color: var(--teal);
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.76);
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--ink);
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .nav a:hover,
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(15, 118, 110, 0.45);
+      background: #ffffff;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 38px;
+      align-items: center;
+      padding: 54px 0 68px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--teal);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(2.65rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 26px 0 0;
+      color: #334155;
+      font-size: clamp(1.08rem, 2.2vw, 1.35rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button.primary {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: white;
+    }
+
+    .portrait {
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.84);
+      box-shadow: var(--shadow);
+    }
+
+    .portrait img {
+      width: min(230px, 72vw);
+      aspect-ratio: 1;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+    }
+
+    .portrait p {
+      margin: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .section {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section h2 {
+      margin: 0 0 18px;
+      font-size: clamp(1.55rem, 3vw, 2.2rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 190px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .card:nth-child(2) h3 {
+      color: var(--coral);
+    }
+
+    .card:nth-child(3) h3 {
+      color: var(--blue);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      color: #334155;
+    }
+
+    .list strong {
+      display: block;
+      color: var(--ink);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding-top: 30px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 840px) {
+      .hero,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 30px;
+      }
+
+      .portrait {
+        justify-self: start;
+        width: min(100%, 360px);
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .site {
+        width: min(100% - 22px, 1120px);
+        padding-top: 18px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .nav {
+        gap: 8px;
+      }
+
+      .nav a,
+      .button {
+        min-height: 40px;
+        padding: 0 12px;
+        font-size: 0.92rem;
+      }
+
+      .hero {
+        gap: 20px;
+        padding-bottom: 22px;
+      }
+
+      .portrait {
+        padding: 16px;
+      }
+
+      .portrait img {
+        width: min(150px, 52vw);
+      }
+
+      .portrait p {
+        font-size: 0.92rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="site">
+    <header class="topbar" aria-label="Site header">
+      <a class="mark" href="/" aria-label="Shyam Shankar home">SS</a>
+      <nav class="nav" aria-label="Profile links">
+        <a href="https://www.linkedin.com/in/syamsankar/">LinkedIn</a>
+        <a href="https://github.com/shyam057cs">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Software engineer - San Francisco Bay Area</p>
+        <h1>Shyam Shankar</h1>
+        <p class="lead">
+          I build software across product and infrastructure, with a current focus on learning more deeply about machine learning and how it can turn real data into useful systems.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://www.linkedin.com/in/syamsankar/">Connect on LinkedIn</a>
+          <a class="button" href="https://github.com/shyam057cs">View GitHub</a>
+        </div>
+      </div>
+
+      <aside class="portrait" aria-label="Profile summary">
+        <img src="https://avatars.githubusercontent.com/u/857589?v=4" alt="Shyam Shankar profile photo">
+        <p>Engineer, learner, and builder interested in ML, data-intensive systems, and thoughtful product work.</p>
+      </aside>
+    </section>
+
+    <section class="section" aria-labelledby="about-title">
+      <div class="split">
+        <div>
+          <h2 id="about-title">About Me</h2>
+        </div>
+        <div>
+          <p>
+            I am a software engineer with about a decade of experience designing and developing applications and systems. My background includes work at VMware, graduate study at Stony Brook University, and projects spanning data science, distributed systems, security, and applied machine learning.
+          </p>
+          <p>
+            Right now, I am especially interested in machine learning: the practical side of model building, the engineering needed around it, and how ML can become part of reliable products instead of staying as a notebook experiment.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="interests-title">
+      <h2 id="interests-title">What I Am Exploring</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Machine Learning</h3>
+          <p>Learning the foundations and practical workflows behind ML, from classification and regression to model evaluation and production-minded tooling.</p>
+        </article>
+        <article class="card">
+          <h3>Data Systems</h3>
+          <p>Interested in systems that process large streams of behavior and event data, and in making that data easier to reason about.</p>
+        </article>
+        <article class="card">
+          <h3>Product Engineering</h3>
+          <p>Focused on building useful software with clean design, understandable architecture, and a bias toward solving real user problems.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="highlights-title">
+      <div class="split">
+        <div>
+          <h2 id="highlights-title">Highlights</h2>
+        </div>
+        <ul class="list">
+          <li>
+            <strong>Software engineering experience</strong>
+            About 10 years of design and development experience across high-scale software systems and applications.
+          </li>
+          <li>
+            <strong>ML and data projects</strong>
+            Built projects involving Naive Bayes, linear regression, decision trees, Yelp review prediction, and parallel computing with CUDA and OpenCL.
+          </li>
+          <li>
+            <strong>Community involvement</strong>
+            Volunteer child advocate work with Child Advocates of Silicon Valley.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Shyam Shankar</span>
+      <span>LinkedIn | GitHub | Machine learning | Software engineering</span>
+    </footer>
+  </main>
+</body>
+</html>
